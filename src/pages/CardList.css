@@ -42,6 +42,19 @@ button:focus-visible {
     height: 200px;
 }
 
+.filters {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.filters input,
+.filters select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+
 /* Média lekérdezés: kisebb képernyőkre optimalizálva */
 @media (max-width: 768px) {
     .card-list-container {
