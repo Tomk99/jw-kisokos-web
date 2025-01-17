@@ -19,7 +19,15 @@ const CreateCard = () => {
     };
 
     const handleFileChange = (e) => {
-        setFormData({ ...formData, file: e.target.files[0] });
+        const file = e.target.files[0];
+        const maxSize = 10 * 1024 * 1024; // 10 MB
+
+        if (file && file.size > maxSize) {
+            alert('A fájl mérete nem haladhatja meg a 10 MB-ot!');
+            return;
+        }
+
+        setFormData({ ...formData, file });
     };
 
     const handleSubmit = async (e) => {
