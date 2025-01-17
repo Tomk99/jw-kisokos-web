@@ -1,16 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import './MainPage.css';
 
 const MainPage = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    return (
-        <div>
-            <h1>JW Kisokos</h1>
-            <button onClick={() => navigate("/cards")}>Karbantartási kártyák</button>
-        </div>
-    );
+  return (
+    <div className="main-container">
+      <h1>JW Kisokos</h1>
+      <div className="button-container">
+        <button onClick={() => navigate("/cards")}>Karbantartási kártyák</button>
+      </div>
+    </div>
+  );
 };
 
 export default MainPage;

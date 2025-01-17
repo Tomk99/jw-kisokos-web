@@ -1,74 +1,89 @@
-/* CreateCard.css */
-
-/* Kártya létrehozásának formázása */
 .create-card-container {
     padding: 20px;
     max-width: 600px;
     margin: 2rem auto;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Kicsit erősebb árnyék */
     border-radius: 10px;
-  }
-  
-  h2 {
+    border: 1px solid #ddd; /* Finom szegély */
+}
+
+h2 {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
     text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  div {
+}
+
+form {
+    width: 100%; /* Töltse ki a szülő konténert */
+}
+
+div {
     margin-bottom: 15px;
-  }
-  
-  label {
+}
+
+label {
     font-size: 16px;
     color: #555;
     margin-bottom: 5px;
     display: block;
-  }
-  
-  input,
-  select {
+}
+
+input,
+select {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ddd;
     width: 100%;
-  }
-  
-  input[type="file"] {
+    box-sizing: border-box; /* A padding ne növelje a szélességet */
+}
+
+input[type="file"] {
     border: none;
-  }
-  
-  /* Gombok */
-  button[type="submit"] {
+}
+
+button[type="submit"] {
     background-color: #FF9800;
-    margin-top: 20px;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #e68900;
-  }
-  
-  button.btn-back {
-    background-color: #2196F3;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
     width: 100%;
-  }
-  
-  button.btn-back:hover {
-    background-color: #0b7dda;
-  }
-  
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #e68900;
+}
+
+button[type="submit"]:focus-visible {
+    outline: 4px solid #f0a500;
+}
+
+.btn-back {
+    background-color: #FF9800;
+    color: white;
+    padding: 0.8em 1.2em;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+}
+
+.btn-back:focus-visible {
+    outline: 4px solid #f0a500;
+}

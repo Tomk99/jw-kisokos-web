@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllCards, deleteCard } from '../services/api';
+import { ClipLoader } from 'react-spinners';  // Töltő karika importálása
+import Card from '../components/Card'; // A Card komponens importálása
 import './CardList.css';
 
 const CardList = () => {
@@ -8,21 +10,28 @@ const CardList = () => {
     const [cards, setCards] = useState([]);
     const [pdfPreviewId, setPdfPreviewId] = useState(null);
     const [imagePreviewId, setImagePreviewId] = useState(null);
+    const [loading, setLoading] = useState(true); // Töltési állapot
 
     // API hívás a kártyák lekérésére
     useEffect(() => {
         getAllCards()
-            .then((response) => setCards(response.data))
-            .catch((error) => console.error('Error fetching cards:', error));
+            .then((response) => {
+                setCards(response.data);
+                setLoading(false); // Töltés befejezése
+            })
+            .catch((error) => {
+                console.error('Error fetching cards:', error);
+                setLoading(false); // Hibás hívás esetén is befejezzük a töltést
+            });
     }, []);
-    
-      const handlePdfPreview = (cardId) => {
+
+    const handlePdfPreview = (cardId) => {
         setPdfPreviewId(pdfPreviewId === cardId ? null : cardId);
-      };
-    
-      const handleImagePreview = (cardId) => {
+    };
+
+    const handleImagePreview = (cardId) => {
         setImagePreviewId(imagePreviewId === cardId ? null : cardId);
-      };
+    };
 
     const handleDelete = (id) => {
         deleteCard(id)
@@ -31,60 +40,31 @@ const CardList = () => {
     };
 
     return (
-        <div>
+        <div className="card-list-container">
             <button className="btn-back" onClick={() => navigate("/")}>Vissza</button>
             <h1>Karbantartási kártyák</h1>
             <button onClick={() => navigate("/cards/create")}>Kártya hozzáadása</button>
-            <ul>
-                {cards.map((card) => (
-                    <li key={card.id}>
-                        <div>
-                            <strong>{card.name} ({card.period})</strong>
-                        </div>
-                        <div>
-                            <strong>Utoljára elvégzett:</strong> {card.lastPerformed}
-                        </div>
-                        <div>
-                            <strong>Tartalom:</strong>
-                            {card.fileData && card.fileType === "image/jpeg" && (
-                                <div>
-                                    <button onClick={() => handleImagePreview(card.id)} className="button-style">
-                                        {imagePreviewId === card.id ? "Elrejtés" : "Megtekintés"}
-                                    </button>
-                                    <button onClick={() => handleDelete(card.id)} className="delete-button-style">
-                                        Törlés
-                                    </button>
-                                    {imagePreviewId === card.id && (
-                                        <img
-                                            src={`data:${card.fileType};base64,${card.fileData}`}
-                                            alt="Card Attachment"
-                                        />
-                                    )}
-                                </div>
-                            )}
-
-                            {card.fileData && card.fileType === "application/pdf" && (
-                                <div>
-                                    <button onClick={() => handlePdfPreview(card.id)} className="button-style">
-                                        {pdfPreviewId === card.id ? "Elrejtés" : "Megtekintés"}
-                                    </button>
-                                    <button onClick={() => handleDelete(card.id)} className="delete-button-style">
-                                        Törlés
-                                    </button>
-                                    {pdfPreviewId === card.id && (
-                                        <iframe
-                                            src={`data:${card.fileType};base64,${card.fileData}`}
-                                            width="100%"
-                                            height="400px"
-                                            title={`PDF Preview - ${card.name}`}
-                                        ></iframe>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            
+            {/* Töltő karika megjelenítése, amíg a kártyák töltődnek */}
+            {loading ? (
+                <div className="loader-container">
+                    <ClipLoader size={50} color="#FF9800" loading={loading} />
+                </div>
+            ) : (
+                <ul>
+                    {cards.map((card) => (
+                        <Card
+                            key={card.id}
+                            card={card}
+                            pdfPreviewId={pdfPreviewId}
+                            imagePreviewId={imagePreviewId}
+                            handlePdfPreview={handlePdfPreview}
+                            handleImagePreview={handleImagePreview}
+                            handleDelete={handleDelete}
+                        />
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

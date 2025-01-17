@@ -1,75 +1,18 @@
-/* CardList.css */
-
 /* Alap elrendezés és stílusok */
 .card-list-container {
     max-width: 1280px;
     margin: 2rem auto;
-    padding: 1.5rem;
-    display: grid;
+    padding: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     list-style: none;
-  }
-  
-  .card-item {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    border: 2px solid #e0e0e0; /* Hozzáadott szegély */
-  }
-  
-  .card-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Kártya címe */
-  .card-item h3 {
-    font-size: 1.5em;
-    margin-bottom: 1rem;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  /* Részletes szöveg a kártyán */
-  .card-item div {
-    margin-bottom: 0.8rem;
-  }
-  
-  .card-item div strong {
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .card-item div {
-    color: #555;
-    font-size: 1.1em;
-  }
-  
-  /* Kép kezelése kártyán */
-  .card-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 1rem;
-  }
-  
-  /* PDF előnézet stílusok */
-  .card-item iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-    margin-top: 1rem;
-  }
-  
-  /* Gombok stílusai */
-  button {
+    background-color: #f9f9f9; /* Világos háttérszín */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
+}
+
+/* Gombok stílusai */
+button {
     background-color: #FF9800;
     color: white;
     border: none;
@@ -80,75 +23,33 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 10px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #e68900;
     transform: scale(1.05);
-  }
-  
-  button:focus-visible {
+}
+
+button:focus-visible {
     outline: 4px solid #f0a500;
-  }
-  
-  /* Delete button stílusok */
-  .delete-button-style {
-    background-color: #e53935;
-    margin-left: 10px;
-  }
-  
-  .delete-button-style:hover {
-    background-color: #d32f2f;
-  }
-  
-  /* Vissza gomb */
-  .btn-back {
-    background-color: #2196F3;
-    color: white;
-    padding: 0.8em 1.2em;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 5px;
-    margin-bottom: 1.5rem;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .btn-back:hover {
-    background-color: #1976D2;
-    transform: scale(1.05);
-  }
-  
-  .btn-back:focus-visible {
-    outline: 4px solid #2196F3;
-  }
-  
-  /* Kártyák közötti távolság, hogy elkerüljük a zsúfoltságot */
-  .card-item {
-    position: relative;
-  }
-  
-  .card-item + .card-item {
-    margin-top: 1.5rem;
-  }
-  
-  /* Média lekérdezés: kisebb képernyőkre optimalizálva */
-  @media (max-width: 768px) {
+}
+
+/* Töltő karika középre helyezése */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+/* Média lekérdezés: kisebb képernyőkre optimalizálva */
+@media (max-width: 768px) {
     .card-list-container {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  
-    .card-item {
-      padding: 1rem;
+
+    .button-style,
+    .delete-button-style {
+        font-size: 14px;
     }
-  
-    .card-item h3 {
-      font-size: 1.3em;
-    }
-  
-    .btn-back, .button-style, .delete-button-style {
-      font-size: 14px;
-    }
-  }
-  
+}

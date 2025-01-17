@@ -1,0 +1,59 @@
+/* MainPage alapelrendezés */
+.main-container {
+    max-width: 1280px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Cím stílus */
+  .main-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Gombok csempeszerű elrendezése */
+  .main-container .button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    margin-top: 2rem;
+  }
+  
+  /* Gombok egyéni stílusa a MainPage-en */
+  .main-container button {
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    padding: 1.2em;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-container button:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+  }
+  
+  /* Média lekérdezés kisebb képernyőkre */
+  @media (max-width: 768px) {
+    .main-container button {
+      font-size: 16px;
+      padding: 1em;
+    }
+  
+    .main-container h1 {
+      font-size: 2em;
+    }
+  }
+  

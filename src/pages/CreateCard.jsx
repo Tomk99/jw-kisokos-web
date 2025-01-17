@@ -42,7 +42,7 @@ const CreateCard = () => {
     };
 
     return (
-        <div>
+        <div className="create-card-container">
             <button className="btn-back" onClick={() => navigate("/cards")}>Vissza</button>
             <h2>Új kártya hozzáadása</h2>
             <form onSubmit={handleSubmit}>
