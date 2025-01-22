@@ -1,8 +1,9 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const handleLogin = () => {
     window.location.href = "https://jw-kisokos-aa53f6432494.herokuapp.com/oauth2/authorization/google";
+    onLogin();
   };
 
   return (
