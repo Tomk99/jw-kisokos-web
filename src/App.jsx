@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import CardList from "./pages/CardList";
 import CreateCard from "./pages/CreateCard";
 import MainPage from "./pages/MainPage";
@@ -11,7 +11,7 @@ const App = () => {
     <Router>
       <div className="App-div">
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cards" element={<CardList />} />
           <Route path="/cards/create" element={<CreateCard />} />
