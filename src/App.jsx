@@ -11,6 +11,7 @@ const App = () => {
     <Router>
       <div className="App-div">
         <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cards" element={<CardList />} />
