@@ -1,36 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import routes from "./services/routeConfig";
-import PrivateRoutes from "./components/PrivateRoutes";
+import CardList from "./pages/CardList";
+import CreateCard from "./pages/CreateCard";
+import MainPage from "./pages/MainPage";
+import Login from "./pages/Login";
 import './App.css';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = () => setIsAuthenticated(true);
-  const handleLogout = () => setIsAuthenticated(false);
-
   return (
     <Router>
       <div className="App-div">
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          
-          {routes.map(({ path, component: Component, protected: isProtected }) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                isProtected ? (
-                  <PrivateRoutes isAuthenticated={isAuthenticated}>
-                    <Component />
-                  </PrivateRoutes>
-                ) : (
-                  <Component />
-                )
-              }
-            />
-          ))}
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cards" element={<CardList />} />
+          <Route path="/cards/create" element={<CreateCard />} />
         </Routes>
       </div>
     </Router>
