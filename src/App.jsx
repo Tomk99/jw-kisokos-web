@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CardList from "./pages/CardList";
 import CreateCard from "./pages/CreateCard";
 import MainPage from "./pages/MainPage";
+import Login from "./pages/Login";
 import './App.css';
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       <div className="App-div">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/cards" element={<CardList />} />
           <Route path="/cards/create" element={<CreateCard />} />
         </Routes>
