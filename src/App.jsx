@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import CardList from "./pages/CardList";
 import CreateCard from "./pages/CreateCard";
 import MainPage from "./pages/MainPage";
-import Login from "./pages/Login";
 import './App.css';
 
 const App = () => {
@@ -12,7 +11,6 @@ const App = () => {
       <div className="App-div">
         <Routes>
           <Route path="/main" element={<MainPage />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/cards" element={<CardList />} />
           <Route path="/cards/create" element={<CreateCard />} />
         </Routes>
