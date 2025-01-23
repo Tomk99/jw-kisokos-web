@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://jw-kisokos-aa53f6432494.herokuapp.com',
+  withCredentials: true
 });
 
 export const getAllCards = () => api.get('/api/cards');
