@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
 import './MainPage.css';
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    api.get('/api/user')
-      .then(response => setUser(response.data))
-      .catch(error => console.error('Hiba a felhasználói adatok lekérésekor:', error));
-  }, []);
 
   return (
     <div className="main-container">
-      <header className="main-header">
-        <h1>JW Kisokos</h1>
-        {user && (
-          <div className="user-info">
-            <div>
-              <p className="user-name">{user.name}</p>
-              <p className="user-email">{user.email}</p>
-            </div>
-          </div>
-        )}
-      </header>
+      <h1>JW Kisokos</h1>
       <div className="button-container">
         <button onClick={() => navigate("/cards")}>Karbantartási kártyák</button>
       </div>
